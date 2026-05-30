@@ -6,6 +6,16 @@ interface CsvDropzoneProps {
   onDataParsed: (rows: { address: string; amount: string }[]) => void;
 }
 
+const isHeaderRow = (addr: string, amt: string): boolean => {
+  const cleanAddr = addr.toLowerCase().trim();
+  const cleanAmt = amt.toLowerCase().trim();
+  
+  const headerAddressWords = ['address', 'recipient', 'receiver', 'wallet'];
+  const headerAmountWords = ['amount', 'ammount', 'value'];
+  
+  return headerAddressWords.includes(cleanAddr) || headerAmountWords.includes(cleanAmt);
+};
+
 export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
   const [isDragActive, setIsDragActive] = useState(false);
   const [manualText, setManualText] = useState('');
@@ -54,6 +64,7 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
         }
       }
 
+      if (isHeaderRow(address, amount)) return;
       parsedData.push({ address, amount });
     });
 
@@ -96,10 +107,11 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
     if (!data || data.length === 0) return [];
     
     const firstItem = data[0];
+    let mapped: { address: string; amount: string }[] = [];
     
     // Check if parsed as objects (header row present)
     if (typeof firstItem === 'object' && !Array.isArray(firstItem)) {
-      return data.map(row => {
+      mapped = data.map(row => {
         const keys = Object.keys(row);
         const addressKey = keys.find(k => /address|receiver|recipient|to/i.test(k)) || keys[0];
         const amountKey = keys.find(k => /amount|value|tokens|qty|quantity/i.test(k)) || keys[1];
@@ -108,16 +120,18 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
           amount: String(row[amountKey] || '').trim(),
         };
       });
+    } else {
+      // Parsed as arrays (no headers or manual parsing fallback)
+      mapped = data.map(row => {
+        if (!Array.isArray(row)) return { address: '', amount: '' };
+        return {
+          address: String(row[0] || '').trim(),
+          amount: String(row[1] || '').trim(),
+        };
+      });
     }
 
-    // Parsed as arrays (no headers or manual parsing fallback)
-    return data.map(row => {
-      if (!Array.isArray(row)) return { address: '', amount: '' };
-      return {
-        address: String(row[0] || '').trim(),
-        amount: String(row[1] || '').trim(),
-      };
-    });
+    return mapped.filter(row => !isHeaderRow(row.address, row.amount));
   };
 
   // 3. Native Drag & Drop Handlers
