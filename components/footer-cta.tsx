@@ -71,7 +71,7 @@ export default function FooterCta() {
                 Tired of compiling payment spreadsheets every Friday?
               </h3>
               <p className="text-xs text-zinc-300 leading-relaxed">
-                Connect your ClickUp or Linear workspace directly. Automate your EVM address verification and compile Safe transfer batches in seconds. Stop pasting spreadsheets manually.
+                The Web3-native task manager that connects directly to ClickUp or Linear. Automate your EVM address verification, map tasks to contributor wallets, and compile Safe payout batches in seconds.
               </p>
             </div>
 
