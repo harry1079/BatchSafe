@@ -64,7 +64,7 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
         }
       }
 
-      if (isHeaderRow(address, amount)) return;
+      if (parsedData.length === 0 && isHeaderRow(address, amount)) return;
       parsedData.push({ address, amount });
     });
 
@@ -131,7 +131,10 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
       });
     }
 
-    return mapped.filter(row => !isHeaderRow(row.address, row.amount));
+    if (mapped.length > 0 && isHeaderRow(mapped[0].address, mapped[0].amount)) {
+      return mapped.slice(1);
+    }
+    return mapped;
   };
 
   // 3. Native Drag & Drop Handlers
