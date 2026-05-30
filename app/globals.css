@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-brand-bg: #030303;
+  --color-brand-card: rgba(10, 10, 12, 0.45);
+  --color-brand-border: rgba(255, 255, 255, 0.06);
+  --color-brand-border-hover: rgba(99, 102, 241, 0.25);
+  --color-brand-glow: rgba(99, 102, 241, 0.08);
+}
+
+:root {
+  --background: #030303;
+  --foreground: #fafafa;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Glassmorphism custom components */
+.glass-panel {
+  background: rgba(10, 10, 14, 0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0px rgba(255, 255, 255, 0.03);
+}
+
+.glass-panel-interactive {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-interactive:hover {
+  border-color: rgba(99, 102, 241, 0.2);
+  box-shadow: 
+    0 20px 40px -15px rgba(0, 0, 0, 0.85),
+    0 0 25px -5px rgba(99, 102, 241, 0.1),
+    inset 0 1px 0px rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+}
+
+/* Glowing background ambient details */
+.bg-glow-orb-indigo {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, rgba(99, 102, 241, 0) 70%);
+}
+
+.bg-glow-orb-purple {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.04) 0%, rgba(139, 92, 246, 0) 70%);
+}
+
+/* Interactive custom table scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* Subtle pulse border keyframes */
+@keyframes border-pulse {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+  50% {
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+}
+
+.pulse-border {
+  animation: border-pulse 4s infinite ease-in-out;
+}
