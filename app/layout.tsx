@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 const inter = Inter({
@@ -40,6 +41,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[#030303] text-zinc-100 font-sans selection:bg-indigo-500/30 selection:text-white">
         {children}
+        <Analytics />
       </body>
     </html>
   );

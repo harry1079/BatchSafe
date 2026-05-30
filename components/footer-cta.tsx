@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Zap, X, Terminal, CheckCircle2, ArrowRight } from 'lucide-react';
+import { track } from '@vercel/analytics';
 
 export default function FooterCta() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +10,14 @@ export default function FooterCta() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
+      // Track beta registration event
+      try {
+        const domain = email.split('@')[1] || 'unknown';
+        track('beta_signup', { email_domain: domain });
+      } catch (err) {
+        // Ignored in dev
+      }
+
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);

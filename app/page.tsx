@@ -10,6 +10,7 @@ import FooterCta from '../components/footer-cta';
 import { validateAddress, findDuplicateAddresses } from '../utils/address-validator';
 import { compileAndUnparse } from '../utils/csv-formatter';
 import { getAddress } from 'viem';
+import { track } from '@vercel/analytics';
 
 export type ValidationStatus = 'VALID' | 'MALFORMED' | 'CHECKSUM_FAILED' | 'EMPTY';
 
@@ -198,6 +199,17 @@ export default function Home() {
     const assetName = tokenConfig.symbol.toUpperCase().replace(/[^A-Z0-9]/g, '_');
     link.setAttribute('download', `safe_payout_batch_${assetName.toLowerCase()}.csv`);
     link.click();
+
+    // Track usage analytics
+    try {
+      track('export_csv', {
+        asset_symbol: tokenConfig.symbol,
+        token_type: tokenConfig.type,
+        transfer_count: rows.length
+      });
+    } catch (e) {
+      // Ignore analytics logging failures in dev
+    }
 
     // Confetti success feedback
     confetti({
