@@ -44,7 +44,7 @@ export default function FooterCta() {
       setTimeout(() => {
         setIsSubmitted(false);
         setIsOpen(false);
-      }, 3000);
+      }, 6000);
     } catch (err: any) {
       console.error(err);
       setError(err.message || 'An unexpected error occurred.');
@@ -123,6 +123,9 @@ export default function FooterCta() {
                   <h5 className="font-semibold text-sm text-zinc-200">You're on the list!</h5>
                   <p className="mt-1 text-xs text-zinc-400">
                     We'll email you once linear-integration features are live.
+                  </p>
+                  <p className="mt-3 text-[10px] text-zinc-500 italic animate-pulse">
+                    You will be redirected to the dashboard in a couple of seconds...
                   </p>
                 </div>
               </div>
