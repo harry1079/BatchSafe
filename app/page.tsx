@@ -270,7 +270,7 @@ export default function Home() {
           )}
         </div>
 
-        {/* Trojan Horse persistent Footer CTA */}
+        {/* Integration Engine persistent Footer CTA */}
         <FooterCta />
       </main>
     </div>

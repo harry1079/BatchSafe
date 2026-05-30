@@ -56,7 +56,7 @@ export default function FooterCta() {
   return (
     <>
       <div className="w-full">
-        {/* Trojan Horse Premium CTA Card */}
+        {/* Integration Engine Premium CTA Card */}
         <div className="relative overflow-hidden rounded-2xl border border-zinc-700 bg-zinc-950/45 p-6 sm:p-8 shadow-2xl pulse-border">
           {/* Decorative glowing gradient orb */}
           <div className="absolute -right-16 -top-16 h-36 w-36 rounded-full bg-indigo-500/10 blur-2xl pointer-events-none" />
@@ -65,7 +65,7 @@ export default function FooterCta() {
             <div className="space-y-2 max-w-2xl">
               <div className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-bold text-indigo-400 uppercase tracking-wider">
                 <Zap className="h-3 w-3 fill-indigo-400" />
-                Trojan Horse Automation
+                Integration Engine
               </div>
               <h3 className="font-display text-base sm:text-lg font-bold text-zinc-100 leading-snug">
                 Tired of compiling payment spreadsheets every Friday?
