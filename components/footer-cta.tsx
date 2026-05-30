@@ -6,10 +6,31 @@ export default function FooterCta() {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
+    if (!email.trim()) return;
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch('/api/beta', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to request beta access.');
+      }
+
       // Track beta registration event
       try {
         const domain = email.split('@')[1] || 'unknown';
@@ -19,11 +40,16 @@ export default function FooterCta() {
       }
 
       setIsSubmitted(true);
+      setEmail('');
       setTimeout(() => {
         setIsSubmitted(false);
-        setEmail('');
         setIsOpen(false);
-      }, 2500);
+      }, 3000);
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || 'An unexpected error occurred.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -78,6 +104,8 @@ export default function FooterCta() {
                 onClick={() => {
                   setIsOpen(false);
                   setIsSubmitted(false);
+                  setError(null);
+                  setIsLoading(false);
                 }}
                 className="text-zinc-400 hover:text-zinc-200 transition-colors p-1 rounded-lg hover:bg-zinc-900 cursor-pointer"
               >
@@ -108,19 +136,26 @@ export default function FooterCta() {
                   <input
                     type="email"
                     required
+                    disabled={isLoading}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@company.com"
-                    className="w-full rounded-lg border border-zinc-700 bg-zinc-900/40 p-2.5 text-xs text-zinc-200 placeholder-zinc-550 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 transition-all"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-900/40 p-2.5 text-xs text-zinc-200 placeholder-zinc-550 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 transition-all disabled:opacity-50"
                   />
+                  {error && (
+                    <div className="text-[10px] text-rose-400 font-medium pt-1 animate-in fade-in duration-150">
+                      {error}
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex justify-end pt-2">
                   <button
                     type="submit"
-                    className="rounded-lg bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white hover:bg-indigo-500 focus:outline-none shadow-md shadow-indigo-600/10 transition-all cursor-pointer w-full sm:w-auto"
+                    disabled={isLoading}
+                    className="rounded-lg bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white hover:bg-indigo-500 focus:outline-none shadow-md shadow-indigo-600/10 transition-all cursor-pointer w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Request Early Access
+                    {isLoading ? 'Requesting Access...' : 'Request Early Access'}
                   </button>
                 </div>
               </form>
