@@ -171,7 +171,7 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
         className={`group relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-12 text-center cursor-pointer transition-all duration-300 ${
           isDragActive
             ? 'border-indigo-500 bg-indigo-500/5 shadow-lg shadow-indigo-500/10'
-            : 'border-zinc-800 bg-zinc-950/20 hover:border-zinc-700 hover:bg-zinc-950/40'
+            : 'border-zinc-700/80 bg-zinc-950/20 hover:border-zinc-500 hover:bg-zinc-950/40'
         }`}
       >
         <input
@@ -182,20 +182,20 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
           className="hidden"
         />
 
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/60 transition-transform group-hover:scale-110 duration-300">
-          <UploadCloud className="h-6 w-6 text-zinc-400 group-hover:text-indigo-400 transition-colors" />
+        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-700 bg-zinc-900/60 transition-transform group-hover:scale-110 duration-300">
+          <UploadCloud className="h-6 w-6 text-zinc-300 group-hover:text-indigo-400 transition-colors" />
         </div>
 
         <h3 className="mt-4 font-display text-base font-semibold text-zinc-200">
           Drag and drop your spreadsheet here
         </h3>
         
-        <p className="mt-2 text-xs text-zinc-500 max-w-sm">
+        <p className="mt-2 text-xs text-zinc-400 max-w-sm">
           Supports CSV or TXT lists. Drag them directly, or click to browse files from your computer.
         </p>
 
-        <div className="mt-1.5 text-[10px] text-zinc-600 font-mono">
-          Required Columns: <code className="text-zinc-500">address</code>, <code className="text-zinc-500">amount</code>
+        <div className="mt-1.5 text-[10px] text-zinc-400 font-mono">
+          Required Columns: <code className="text-zinc-200">address</code>, <code className="text-zinc-200">amount</code>
         </div>
       </div>
 
@@ -204,7 +204,7 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
         <button
           type="button"
           onClick={() => setShowManual(!showManual)}
-          className="flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-2 text-xs font-semibold text-zinc-300 hover:text-white hover:bg-zinc-900/80 transition-all cursor-pointer"
+          className="flex items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-900/40 px-4 py-2 text-xs font-semibold text-zinc-200 hover:text-white hover:bg-zinc-900/80 transition-all cursor-pointer"
         >
           <ClipboardList className="h-4 w-4" />
           {showManual ? 'Hide Manual Input' : 'Paste Address List'}
@@ -213,7 +213,7 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
         <button
           type="button"
           onClick={handleLoadSampleData}
-          className="flex items-center gap-2 rounded-lg border border-dashed border-indigo-500/40 bg-indigo-500/5 px-4 py-2 text-xs font-semibold text-indigo-400 hover:bg-indigo-500/10 hover:text-indigo-300 transition-all cursor-pointer"
+          className="flex items-center gap-2 rounded-lg border border-dashed border-indigo-500/50 bg-indigo-500/5 px-4 py-2 text-xs font-semibold text-indigo-350 hover:bg-indigo-500/10 hover:text-indigo-300 transition-all cursor-pointer"
         >
           <FileSpreadsheet className="h-4 w-4" />
           Load Demo Sample Data
@@ -222,7 +222,7 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
 
       {/* Error Message */}
       {error && (
-        <div className="flex items-start gap-2 rounded-lg border border-rose-500/20 bg-rose-500/5 p-3.5 text-xs text-rose-400 animate-in fade-in slide-in-from-top-1 duration-200">
+        <div className="flex items-start gap-2 rounded-lg border border-rose-500/30 bg-rose-500/5 p-3.5 text-xs text-rose-400 animate-in fade-in slide-in-from-top-1 duration-200">
           <AlertCircle className="h-4.5 w-4.5 shrink-0" />
           <span>{error}</span>
         </div>
@@ -232,10 +232,10 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
       {showManual && (
         <form
           onSubmit={handleManualSubmit}
-          className="rounded-xl border border-zinc-800/80 bg-zinc-950/30 p-5 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300"
+          className="rounded-xl border border-zinc-700/80 bg-zinc-950/30 p-5 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300"
         >
           <div>
-            <label className="block text-xs font-semibold text-zinc-400 mb-1.5 uppercase tracking-wider">
+            <label className="block text-xs font-semibold text-zinc-300 mb-1.5 uppercase tracking-wider">
               Paste lists (One recipient per line)
             </label>
             <textarea
@@ -243,10 +243,10 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
               value={manualText}
               onChange={(e) => setManualText(e.target.value)}
               placeholder={`0x93C4c10DA30B2c842E0d5dC08477dE9b835eE8b9, 1.5&#10;0x41f87a4fbe363c0123ab57cd902c5a1db7c5a866  0.75&#10;0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&#9;150.00`}
-              className="w-full rounded-lg border border-zinc-800 bg-zinc-950/60 p-3 text-xs font-mono text-zinc-300 placeholder-zinc-700 focus:border-zinc-700 focus:outline-none focus:ring-1 focus:ring-zinc-700 transition-all"
+              className="w-full rounded-lg border border-zinc-750 bg-zinc-950/60 p-3 text-xs font-mono text-zinc-100 placeholder-zinc-500 focus:border-zinc-650 focus:outline-none focus:ring-1 focus:ring-zinc-650 transition-all"
             />
-            <p className="mt-1.5 text-[10px] text-zinc-500 leading-relaxed">
-              Auto-detects delimiters (comma, tab, space). Structure: <code className="text-zinc-400">address [delimiter] amount</code>.
+            <p className="mt-1.5 text-[10px] text-zinc-400 leading-relaxed">
+              Auto-detects delimiters (comma, tab, space). Structure: <code className="text-zinc-300">address [delimiter] amount</code>.
             </p>
           </div>
 

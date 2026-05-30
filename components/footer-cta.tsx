@@ -22,7 +22,7 @@ export default function FooterCta() {
     <>
       <div className="w-full">
         {/* Trojan Horse Premium CTA Card */}
-        <div className="relative overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/45 p-6 sm:p-8 shadow-2xl pulse-border">
+        <div className="relative overflow-hidden rounded-2xl border border-zinc-700 bg-zinc-950/45 p-6 sm:p-8 shadow-2xl pulse-border">
           {/* Decorative glowing gradient orb */}
           <div className="absolute -right-16 -top-16 h-36 w-36 rounded-full bg-indigo-500/10 blur-2xl pointer-events-none" />
 
@@ -35,7 +35,7 @@ export default function FooterCta() {
               <h3 className="font-display text-base sm:text-lg font-bold text-zinc-100 leading-snug">
                 Tired of compiling payment spreadsheets every Friday?
               </h3>
-              <p className="text-xs text-zinc-400 leading-relaxed">
+              <p className="text-xs text-zinc-300 leading-relaxed">
                 Connect your ClickUp or Linear workspace directly. Automate your EVM address verification and compile Safe transfer batches in seconds. Stop pasting spreadsheets manually.
               </p>
             </div>
@@ -54,7 +54,7 @@ export default function FooterCta() {
       {/* Beta Sign Up Modal */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 p-6 shadow-2xl animate-in zoom-in-95 duration-200">
+          <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-zinc-700 bg-zinc-950 p-6 shadow-2xl animate-in zoom-in-95 duration-200">
             {/* Modal Header */}
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-2">
@@ -70,7 +70,7 @@ export default function FooterCta() {
                   setIsOpen(false);
                   setIsSubmitted(false);
                 }}
-                className="text-zinc-500 hover:text-zinc-300 transition-colors p-1 rounded-lg hover:bg-zinc-900 cursor-pointer"
+                className="text-zinc-400 hover:text-zinc-200 transition-colors p-1 rounded-lg hover:bg-zinc-900 cursor-pointer"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -84,14 +84,14 @@ export default function FooterCta() {
                 </div>
                 <div>
                   <h5 className="font-semibold text-sm text-zinc-200">You're on the list!</h5>
-                  <p className="mt-1 text-xs text-zinc-500">
+                  <p className="mt-1 text-xs text-zinc-400">
                     We'll email you once linear-integration features are live.
                   </p>
                 </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-                <p className="text-xs text-zinc-400 leading-relaxed">
+                <p className="text-xs text-zinc-300 leading-relaxed">
                   Enter your email to receive early developer previews, API documentation, and details about our upcoming ClickUp & Linear webhook trigger modules.
                 </p>
 
@@ -102,7 +102,7 @@ export default function FooterCta() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@company.com"
-                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900/40 p-2.5 text-xs text-zinc-300 placeholder-zinc-700 focus:border-zinc-700 focus:outline-none focus:ring-1 focus:ring-zinc-700 transition-all"
+                    className="w-full rounded-lg border border-zinc-700 bg-zinc-900/40 p-2.5 text-xs text-zinc-200 placeholder-zinc-550 focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 transition-all"
                   />
                 </div>
 

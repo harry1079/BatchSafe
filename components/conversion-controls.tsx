@@ -145,8 +145,8 @@ export default function ConversionControls({
   const disableExportBtn = isExportDisabled || (isCustomToken && !!customAddressError) || (isCustomToken && !customAddress);
 
   return (
-    <div className="rounded-xl border border-zinc-800/80 bg-zinc-950/45 p-6 space-y-6">
-      <div className="flex items-center gap-2 border-b border-zinc-900 pb-4">
+    <div className="rounded-xl border border-zinc-700 bg-zinc-950/45 p-6 space-y-6">
+      <div className="flex items-center gap-2 border-b border-zinc-800 pb-4">
         <div className="p-1.5 rounded-md bg-indigo-500/10 text-indigo-400">
           <Coins className="h-4.5 w-4.5" />
         </div>
@@ -158,14 +158,14 @@ export default function ConversionControls({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Network Preset Selector */}
         <div className="space-y-2">
-          <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wider">
+          <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider">
             Target Network
           </label>
           <div className="relative">
             <select
               value={selectedNetwork.id}
               onChange={handleNetworkChange}
-              className="w-full rounded-lg border border-zinc-800 bg-zinc-900/40 p-2.5 text-xs text-zinc-300 focus:border-zinc-700 focus:outline-none transition-all cursor-pointer appearance-none"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900/40 p-2.5 text-xs text-zinc-200 focus:border-zinc-500 focus:outline-none transition-all cursor-pointer appearance-none animate-none"
             >
               {NETWORKS.map(net => (
                 <option key={net.id} value={net.id} className="bg-zinc-950">
@@ -173,7 +173,7 @@ export default function ConversionControls({
                 </option>
               ))}
             </select>
-            <div className="pointer-events-none absolute right-3 top-3.5 flex items-center text-zinc-500">
+            <div className="pointer-events-none absolute right-3 top-3.5 flex items-center text-zinc-400">
               <Network className="h-4.5 w-4.5" />
             </div>
           </div>
@@ -181,13 +181,13 @@ export default function ConversionControls({
 
         {/* Token Selector */}
         <div className="space-y-2">
-          <label className="block text-xs font-semibold text-zinc-500 uppercase tracking-wider">
+          <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider">
             Transfer Asset
           </label>
           <select
             value={isCustomToken ? 'custom' : selectedTokenIndex}
             onChange={handleTokenChange}
-            className="w-full rounded-lg border border-zinc-800 bg-zinc-900/40 p-2.5 text-xs text-zinc-300 focus:border-zinc-700 focus:outline-none transition-all cursor-pointer"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-900/40 p-2.5 text-xs text-zinc-200 focus:border-zinc-500 focus:outline-none transition-all cursor-pointer"
           >
             {selectedNetwork.tokens.map((tok, idx) => (
               <option key={tok.symbol} value={idx} className="bg-zinc-950">
@@ -203,9 +203,9 @@ export default function ConversionControls({
 
       {/* Custom Token Configuration Options */}
       {isCustomToken && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-zinc-900 pt-5 animate-in fade-in slide-in-from-top-1 duration-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-zinc-800 pt-5 animate-in fade-in slide-in-from-top-1 duration-200">
           <div className="md:col-span-2 space-y-1.5">
-            <label className="block text-[10px] font-semibold text-zinc-500 uppercase tracking-wider">
+            <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider">
               Token Contract Address (EVM)
             </label>
             <input
@@ -213,8 +213,8 @@ export default function ConversionControls({
               value={customAddress}
               onChange={(e) => setCustomAddress(e.target.value)}
               placeholder="0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
-              className={`w-full rounded-lg border bg-zinc-900/20 p-2 text-xs font-mono text-zinc-300 placeholder-zinc-700 focus:border-zinc-700 focus:outline-none transition-all ${
-                customAddressError ? 'border-rose-500/30 text-rose-400' : 'border-zinc-800'
+              className={`w-full rounded-lg border bg-zinc-900/20 p-2 text-xs font-mono text-zinc-200 placeholder-zinc-500 focus:border-zinc-500 focus:outline-none transition-all ${
+                customAddressError ? 'border-rose-500/40 text-rose-450' : 'border-zinc-700'
               }`}
             />
             {customAddressError && (
@@ -225,7 +225,7 @@ export default function ConversionControls({
           </div>
 
           <div className="space-y-1.5">
-            <label className="block text-[10px] font-semibold text-zinc-500 uppercase tracking-wider">
+            <label className="block text-[10px] font-semibold text-zinc-400 uppercase tracking-wider">
               Token Symbol
             </label>
             <input
@@ -233,19 +233,19 @@ export default function ConversionControls({
               value={customSymbol}
               onChange={(e) => setCustomSymbol(e.target.value)}
               placeholder="USDC"
-              className="w-full rounded-lg border border-zinc-800 bg-zinc-900/20 p-2 text-xs font-mono text-zinc-300 placeholder-zinc-700 focus:border-zinc-700 focus:outline-none transition-all"
+              className="w-full rounded-lg border border-zinc-700 bg-zinc-900/20 p-2 text-xs font-mono text-zinc-250 placeholder-zinc-550 focus:border-zinc-500 focus:outline-none transition-all"
             />
           </div>
         </div>
       )}
 
       {/* Download Action Trigger Button */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-zinc-900 pt-5">
-        <div className="text-zinc-500 text-xs">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-zinc-800 pt-5">
+        <div className="text-zinc-400 text-xs">
           {totalTransfers > 0 ? (
             <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-4 w-4 text-emerald-500" />
-              Compiled <strong className="text-zinc-300">{totalTransfers}</strong> transfers successfully.
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              Compiled <strong className="text-zinc-200">{totalTransfers}</strong> transfers successfully.
             </span>
           ) : (
             <span>No transfers compiled yet.</span>
@@ -257,7 +257,7 @@ export default function ConversionControls({
           disabled={disableExportBtn}
           className={`flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white transition-all shadow-lg cursor-pointer ${
             disableExportBtn
-              ? 'bg-zinc-800 text-zinc-500 cursor-not-allowed shadow-none border border-zinc-900'
+              ? 'bg-zinc-900 text-zinc-500 cursor-not-allowed shadow-none border border-zinc-800'
               : 'bg-indigo-600 hover:bg-indigo-500 hover:scale-[1.01] hover:shadow-indigo-500/10 active:scale-100 duration-200'
           }`}
         >

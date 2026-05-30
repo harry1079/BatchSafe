@@ -21,7 +21,7 @@ export function validateAddress(address: string): ValidationResult {
   }
 
   // 1. Basic length and hex structure check
-  if (!EVM_ADDRESS_REGEX.test(cleanAddress) || !isAddress(cleanAddress)) {
+  if (!EVM_ADDRESS_REGEX.test(cleanAddress)) {
     return { isValid: false, errorType: 'MALFORMED' };
   }
 
