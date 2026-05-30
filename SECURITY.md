@@ -1,6 +1,6 @@
 # SECURITY & PRIVACY POLICY
 
-## BatchSafe — Client-Side Safety Guarantee
+## BatchSafe — Client-Side Safety
 
 BatchSafe is a high-utility bulk payout compiler designed specifically for Web3 operations leads, multisig signers, and DAOs. Because we handle high-value address lists, we prioritize absolute security and data privacy.
 
