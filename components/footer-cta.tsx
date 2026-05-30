@@ -121,10 +121,10 @@ export default function FooterCta() {
                 </div>
                 <div>
                   <h5 className="font-semibold text-sm text-zinc-200">You're on the list!</h5>
-                  <p className="mt-1 text-xs text-zinc-400">
+                  <p className="mt-1 text-xs text-zinc-200">
                     We'll email you once linear-integration features are live.
                   </p>
-                  <p className="mt-3 text-[10px] text-zinc-500 italic animate-pulse">
+                  <p className="mt-3 text-xs text-zinc-400 italic animate-pulse">
                     You will be redirected to the dashboard in a couple of seconds...
                   </p>
                 </div>
