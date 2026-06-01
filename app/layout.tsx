@@ -23,9 +23,9 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://batchsafe.xyz'),
-  title: "BatchSafe — Gnosis Safe Bulk Transfer CSV Tool",
-  description: "Instantly parse, validate, checksum, and convert bulk address lists into a CSV format compatible with Gnosis Safe's Transaction Builder. 100% client-side, secure, and free.",
-  keywords: ["Gnosis Safe", "Safe", "CSV Generator", "Bulk Transfer", "Crypto Payouts", "EVM Payouts", "Web3 Utility"],
+  title: "BatchSafe | Gnosis Safe CSV Import & Bulk Batch Payout Tool",
+  description: "Instantly convert CSV files to Gnosis Safe bulk transfers. Validate formats, verify EVM checksums, and compile Safe-compatible batch payouts. 100% client-side, free, and secure.",
+  keywords: ["Gnosis Safe", "Safe", "CSV Generator", "Bulk Transfer", "Crypto Payouts", "EVM Payouts", "Web3 Utility", "Gnosis Safe CSV Import", "Batch Payout"],
   authors: [{ name: "BatchSafe Team" }],
   robots: "index, follow",
 };

@@ -1,54 +1,37 @@
-# Implementation Plan - Landing Page Copy & Layout Redesign for BatchSafe
+# Implementation Plan - SEO Optimization for BatchSafe
 
-This plan outlines the updates to the landing page copy and layout for [batchsafe.xyz](https://batchsafe.xyz) to better hook DAO treasury managers and Web3 operations leads, build security trust, and separate the CSV utility's value proposition from the upcoming webhook-based automation suite waitlist.
-
-## User Review Required
-
-> [!IMPORTANT]
-> **Key Copy Strategy Decisions:**
-> 1. **Primary Headline Choice:** We've selected **"Friday contributor payouts shouldn't ruin your weekend."** as the main landing hook because it directly addresses the emotional strain of manual Friday payouts.
-> 2. **Clear Separation of Products:** The CSV utility is kept front-and-center as a 100% free, client-side, zero-latency tool requiring no wallet connection. The waitlist is framed in the footer card as the next-level upgrade: **"Ready to skip spreadsheets entirely next Friday?"** (offering automated integrations with Linear/ClickUp/GitHub).
-
-### Headline Options for A/B Testing
-Here are the three requested A/B test options that we can rotate:
-* **Option A (The Friday Pain):** `"Tired of compiling payment spreadsheets every Friday?"`
-* **Option B (The Direct Benefit/Time):** `"From messy spreadsheet to Safe batch transaction in 30 seconds."`
-* **Option C (Security/Irreverent):** `"Because copy-pasting 47 addresses at 6pm is how you send money to the wrong person."`
-
----
+This plan outlines the SEO improvements to [batchsafe.xyz](https://batchsafe.xyz) by optimizing page metadata, titles, headers, and body copy to rank for keywords like "Gnosis Safe CSV import," "bulk transfer," and "batch payout."
 
 ## Proposed Changes
 
-### 1. Landing Hero & Main Copy
+### 1. Metadata and Page Titles
 
-#### [MODIFY] [page.tsx](file:///Users/hereward/DEVELOPER/WEB3/BatchSafe/app/page.tsx)
-* Replace the descriptive headline `"Gnosis Safe Bulk Transfer Compiler"` with the high-impact hook headline `"Friday contributor payouts shouldn't ruin your weekend."`
-* Rewrite the one-liner description to highlight: client-side speed/security, no wallet connection required to compile, and zero server latency.
-* **Add Trust & Security Signals Grid** (visible when no file is loaded, i.e., `fileStatus === 'idle'`):
-  * **Zero Server Latency:** Client-side parsing and compilation in-browser. Contributor and payment data never touch our servers.
-  * **No Wallet Needed:** Compile, validate, and download Safe-compatible CSV files without linking an admin wallet. Connect only when executing.
-  * **Auto-Error Spotting:** Flag malformed EVM addresses, duplicate entries, and checksum failures instantly.
-  * **100% Open Source:** Fully transparent and inspectable logic on GitHub.
-* **Add How it Works Section** (visible when no file is loaded):
-  * A 3-step visual sequence: 1. Drop your CSV -> 2. Review and Fix -> 3. Import to Gnosis Safe.
+#### [MODIFY] [layout.tsx](file:///Users/hereward/DEVELOPER/WEB3/BatchSafe/app/layout.tsx)
+* Update `metadata.title` to be keyword-rich:
+  * **New Title:** `"BatchSafe | Gnosis Safe CSV Import & Bulk Batch Payout Tool"`
+* Update `metadata.description` to target key search queries:
+  * **New Meta Description:** `"Instantly convert CSV files to Gnosis Safe bulk transfers. Validate formats, verify EVM checksums, and compile Safe-compatible batch payouts. 100% client-side, free, and secure."`
 
 ---
 
-### 2. Waitlist & Automation Card
+### 2. Page Heading Structure & Keyword Copy
 
-#### [MODIFY] [footer-cta.tsx](file:///Users/hereward/DEVELOPER/WEB3/BatchSafe/components/footer-cta.tsx)
-* Change the footer CTA title from `"Tired of compiling..."` (which is now in the hero hook) to `"Ready to skip spreadsheets entirely next Friday?"`
-* Clarify the description: frame it as the **BatchSafe Automation Suite** waitlist for connecting tools like ClickUp, Linear, or GitHub directly to Safe.
-* Update modal texts to match the updated waitlist messaging for both the standard waitlist button and the export-success celebration trigger.
+#### [MODIFY] [page.tsx](file:///Users/hereward/DEVELOPER/WEB3/BatchSafe/app/page.tsx)
+* Incorporate targeted keywords into the landing page layout:
+  * **H1 Header (Visual Hook):** Keep the highly-converting headline `"Friday contributor payouts shouldn't ruin your weekend."` as the main `h1`.
+  * **H2 Subheader (SEO Target):** Add a descriptive `h2` below the `h1` that targets: `"Convert CSV to Gnosis Safe batch transactions. No wallet required."`
+  * **Introductory Copy (Keyword Integration):** Update the subtext paragraph to naturally weave in the required phrases:
+    > *"BatchSafe is a secure, client-side utility designed to streamline how you **import CSV to Gnosis Safe**. Instead of manual copy-pasting, drop your spreadsheet to validate formatting, fix EVM checksums, and export a clean **bulk transfer** file for your weekly **batch payout**."*
 
 ---
 
 ## Verification Plan
 
 ### Automated Tests
-* Run `npm run build` to verify there are no compilation or TypeScript errors.
+* Run `npm run build` to verify the application compiles cleanly.
 
 ### Manual Verification
-* Visually inspect the landing page in the browser to ensure the layout looks premium, margins are correct, and icons/colors blend with the dark theme.
-* Confirm that the Trust Signals and "How it Works" sections disappear when a CSV is uploaded to let the user focus on the transaction table, and reappear when they clear the workspace.
-* Verify the footer waitlist CTA opens the email popup, and submitting a valid email works and reports the correct beta details.
+* Inspect the rendered HTML (e.g., in developer tools) to confirm:
+  * The `<title>` is updated to `"BatchSafe | Gnosis Safe CSV Import & Bulk Batch Payout Tool"`.
+  * The `<meta name="description">` matches the new search-engine targeted description.
+  * The heading hierarchy goes correctly from `h1` (Hero pain hook) to `h2` (SEO target descriptors).

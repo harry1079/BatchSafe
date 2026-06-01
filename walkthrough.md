@@ -30,6 +30,10 @@ We have successfully rewritten the landing page copy and refined the layout for 
 * Updated button text to `"Join Automation Beta Waitlist"`.
 * Updated modal titles, bodies, and success states to specify the upcoming task integration modules (Linear, ClickUp, GitHub webhook syncing).
 
+### 5. Search Engine Optimization (SEO) Upgrades
+* **Targeted Titles & Keywords (`app/layout.tsx`):** Changed title to `"BatchSafe | Gnosis Safe CSV Import & Bulk Batch Payout Tool"` and optimized metadata description/keywords.
+* **H2 Subheading & Copy Integration (`app/page.tsx`):** Inserted the subheader `"Convert CSV to Gnosis Safe batch transactions. No wallet required."` and updated introduction copy to naturally use targeted keywords like `import CSV to Gnosis Safe`, `bulk transfer`, and `batch payout`.
+
 ---
 
 ## Verification Results

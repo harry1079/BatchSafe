@@ -10,6 +10,11 @@ All notable changes to this project will be documented in this file.
   - Added a visual Trust & Security signals grid highlighting client-side processing, no wallet connection to compile, auto-error checking, and open-source transparency.
   - Added a clean 3-step visual sequence outlining the drop -> review -> import process.
   - Redesigned the footer CTA waitlist message and modal text to cleanly separate the free CSV utility from the upcoming automated Integration Suite waitlist.
+- **Search Engine Optimization (SEO) Upgrades**:
+  - Updated page titles to keyword-rich: *"BatchSafe | Gnosis Safe CSV Import & Bulk Batch Payout Tool"*.
+  - Configured optimized meta descriptions and keywords for search queries.
+  - Updated heading hierarchies with an SEO-targeted H2 subheading: *"Convert CSV to Gnosis Safe batch transactions. No wallet required."*
+  - Refined page introductory copy to naturally integrate targeted keywords (import CSV to Gnosis Safe, bulk transfer, batch payout).
 
 ## [1.1.0] - 2026-06-01
 

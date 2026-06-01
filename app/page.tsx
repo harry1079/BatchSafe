@@ -247,8 +247,11 @@ export default function Home() {
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
             Friday contributor payouts <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-500 bg-clip-text text-transparent">shouldn't ruin your weekend.</span>
           </h1>
-          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl leading-relaxed">
-            Convert messy spreadsheet payouts into Safe-ready batch transactions in seconds. No signups, no wallet connection required to compile, and zero server latency.
+          <h2 className="font-display text-lg sm:text-xl font-bold text-zinc-200 tracking-tight">
+            Convert CSV to Gnosis Safe batch transactions. No wallet required.
+          </h2>
+          <p className="text-sm sm:text-base text-zinc-400 max-w-3xl leading-relaxed">
+            BatchSafe is a secure, client-side utility designed to streamline how you <strong className="font-semibold text-zinc-200">import CSV to Gnosis Safe</strong>. Instead of manual copy-pasting, drop your spreadsheet to validate formatting, fix EVM checksums, and export a clean <strong className="font-semibold text-zinc-200">bulk transfer</strong> file for your weekly <strong className="font-semibold text-zinc-200">batch payout</strong>.
           </p>
         </div>
 
