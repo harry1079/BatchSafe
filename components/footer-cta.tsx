@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Zap, X, Terminal, CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
-import { track } from '@vercel/analytics';
+import posthog from 'posthog-js';
 
 export interface FooterCtaProps {
   isOpen?: boolean;
@@ -50,13 +50,8 @@ export default function FooterCta({
         throw new Error(data.error || 'Failed to request beta access.');
       }
 
-      // Track beta registration event
-      try {
-        const domain = email.split('@')[1] || 'unknown';
-        track('beta_signup', { email_domain: domain, source: modalSource });
-      } catch (err) {
-        // Ignored in dev
-      }
+      const domain = email.split('@')[1] || 'unknown';
+      posthog.capture('beta_signup', { email_domain: domain, source: modalSource });
 
       setIsSubmitted(true);
       setEmail('');
@@ -96,11 +91,7 @@ export default function FooterCta({
 
             <button
               onClick={() => {
-                try {
-                  track('click_join_beta_cta');
-                } catch (e) {
-                  // Ignore
-                }
+                posthog.capture('click_join_beta_cta');
                 setModalSource('cta');
                 setIsOpen(true);
               }}

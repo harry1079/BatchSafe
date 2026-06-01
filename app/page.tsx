@@ -2,6 +2,7 @@
 
 import React, { useState, useCallback } from 'react';
 import confetti from 'canvas-confetti';
+import posthog from 'posthog-js';
 import Header from '../components/header';
 import CsvDropzone from '../components/csv-dropzone';
 import CsvTablePreview from '../components/csv-table-preview';
@@ -10,7 +11,6 @@ import FooterCta from '../components/footer-cta';
 import { validateAddress, findDuplicateAddresses } from '../utils/address-validator';
 import { compileAndUnparse } from '../utils/csv-formatter';
 import { getAddress } from 'viem';
-import { track } from '@vercel/analytics';
 
 export type ValidationStatus = 'VALID' | 'MALFORMED' | 'CHECKSUM_FAILED' | 'EMPTY';
 
@@ -202,16 +202,11 @@ export default function Home() {
     link.setAttribute('download', `safe_payout_batch_${assetName.toLowerCase()}.csv`);
     link.click();
 
-    // Track usage analytics
-    try {
-      track('export_csv', {
-        asset_symbol: tokenConfig.symbol,
-        token_type: tokenConfig.type,
-        transfer_count: rows.length
-      });
-    } catch (e) {
-      // Ignore analytics logging failures in dev
-    }
+    posthog.capture('export_csv', {
+      asset_symbol: tokenConfig.symbol,
+      token_type: tokenConfig.type,
+      transfer_count: rows.length
+    });
 
     // Confetti success feedback
     confetti({
@@ -224,11 +219,7 @@ export default function Home() {
     setTimeout(() => {
       setModalSource('export');
       setIsBetaModalOpen(true);
-      try {
-        track('show_export_beta_popup');
-      } catch (e) {
-        // Ignore
-      }
+      posthog.capture('show_export_beta_popup');
     }, 800);
   }, [rows, tokenConfig, setModalSource, setIsBetaModalOpen]);
 
