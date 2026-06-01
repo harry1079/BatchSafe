@@ -1,9 +1,28 @@
 import React, { useState } from 'react';
-import { Zap, X, Terminal, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Zap, X, Terminal, CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
 import { track } from '@vercel/analytics';
 
-export default function FooterCta() {
-  const [isOpen, setIsOpen] = useState(false);
+export interface FooterCtaProps {
+  isOpen?: boolean;
+  setIsOpen?: (isOpen: boolean) => void;
+  modalSource?: 'cta' | 'export';
+  setModalSource?: (source: 'cta' | 'export') => void;
+}
+
+export default function FooterCta({
+  isOpen: controlledIsOpen,
+  setIsOpen: controlledSetIsOpen,
+  modalSource: controlledSource,
+  setModalSource: controlledSetSource,
+}: FooterCtaProps = {}) {
+  const [localIsOpen, localSetIsOpen] = useState(false);
+  const [localSource, localSetSource] = useState<'cta' | 'export'>('cta');
+
+  const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : localIsOpen;
+  const setIsOpen = controlledSetIsOpen !== undefined ? controlledSetIsOpen : localSetIsOpen;
+  const modalSource = controlledSource !== undefined ? controlledSource : localSource;
+  const setModalSource = controlledSetSource !== undefined ? controlledSetSource : localSetSource;
+
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +53,7 @@ export default function FooterCta() {
       // Track beta registration event
       try {
         const domain = email.split('@')[1] || 'unknown';
-        track('beta_signup', { email_domain: domain });
+        track('beta_signup', { email_domain: domain, source: modalSource });
       } catch (err) {
         // Ignored in dev
       }
@@ -76,7 +95,15 @@ export default function FooterCta() {
             </div>
 
             <button
-              onClick={() => setIsOpen(true)}
+              onClick={() => {
+                try {
+                  track('click_join_beta_cta');
+                } catch (e) {
+                  // Ignore
+                }
+                setModalSource('cta');
+                setIsOpen(true);
+              }}
               className="flex items-center gap-2 shrink-0 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 px-5 py-3 text-xs font-bold text-white shadow-lg shadow-indigo-500/10 hover:shadow-indigo-500/25 hover:from-indigo-600 hover:to-violet-700 transition-all duration-200 cursor-pointer group"
             >
               <span>Join Task Manager Beta</span>
@@ -94,10 +121,14 @@ export default function FooterCta() {
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-500/10 text-indigo-400">
-                  <Terminal className="h-4.5 w-4.5" />
+                  {modalSource === 'export' ? (
+                    <Sparkles className="h-4.5 w-4.5" />
+                  ) : (
+                    <Terminal className="h-4.5 w-4.5" />
+                  )}
                 </div>
                 <h4 className="font-display text-sm font-bold text-white">
-                  BatchSafe Automation Beta
+                  {modalSource === 'export' ? 'Export Successful! 🎉' : 'BatchSafe Automation Beta'}
                 </h4>
               </div>
               <button
@@ -122,7 +153,9 @@ export default function FooterCta() {
                 <div>
                   <h5 className="font-semibold text-sm text-zinc-200">You're on the list!</h5>
                   <p className="mt-1 text-xs text-zinc-200">
-                    We'll email you once linear-integration features are live.
+                    {modalSource === 'export'
+                      ? "We'll invite you once Linear & ClickUp automated export modules are ready!"
+                      : "We'll email you once linear-integration features are live."}
                   </p>
                   <p className="mt-3 text-xs text-zinc-400 italic animate-pulse">
                     You will be redirected to the dashboard in a couple of seconds...
@@ -132,7 +165,15 @@ export default function FooterCta() {
             ) : (
               <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                 <p className="text-xs text-zinc-300 leading-relaxed">
-                  Enter your email to receive early developer previews, API documentation, and details about our upcoming ClickUp & Linear webhook trigger modules.
+                  {modalSource === 'export' ? (
+                    <span>
+                      Ready to automate this workflow? Join the Task Manager Beta to connect Linear or ClickUp, automate EVM address verification, and compile payouts automatically.
+                    </span>
+                  ) : (
+                    <span>
+                      Enter your email to receive early developer previews, API documentation, and details about our upcoming ClickUp & Linear webhook trigger modules.
+                    </span>
+                  )}
                 </p>
 
                 <div className="space-y-1">

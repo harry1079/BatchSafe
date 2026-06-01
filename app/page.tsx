@@ -33,6 +33,8 @@ export default function Home() {
     contractAddress: '',
     symbol: 'ETH'
   });
+  const [isBetaModalOpen, setIsBetaModalOpen] = useState(false);
+  const [modalSource, setModalSource] = useState<'cta' | 'export'>('cta');
 
   // Calculate validation states and duplicate flags
   const calculateRowStates = (
@@ -217,7 +219,18 @@ export default function Home() {
       spread: 80,
       origin: { y: 0.6 }
     });
-  }, [rows, tokenConfig]);
+
+    // Sleek celebratory popup trigger after confetti starts
+    setTimeout(() => {
+      setModalSource('export');
+      setIsBetaModalOpen(true);
+      try {
+        track('show_export_beta_popup');
+      } catch (e) {
+        // Ignore
+      }
+    }, 800);
+  }, [rows, tokenConfig, setModalSource, setIsBetaModalOpen]);
 
   const hasExportErrors = rows.some(r => r.validationStatus !== 'VALID' || !r.isAmountValid) || rows.length === 0;
 
@@ -271,7 +284,12 @@ export default function Home() {
         </div>
 
         {/* Integration Engine persistent Footer CTA */}
-        <FooterCta />
+        <FooterCta
+          isOpen={isBetaModalOpen}
+          setIsOpen={setIsBetaModalOpen}
+          modalSource={modalSource}
+          setModalSource={setModalSource}
+        />
       </main>
     </div>
   );

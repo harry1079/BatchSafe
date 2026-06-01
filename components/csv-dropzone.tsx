@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { UploadCloud, ClipboardList, AlertCircle, FileSpreadsheet } from 'lucide-react';
 import Papa from 'papaparse';
+import { track } from '@vercel/analytics';
 
 interface CsvDropzoneProps {
   onDataParsed: (rows: { address: string; amount: string }[]) => void;
@@ -73,6 +74,12 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
       return;
     }
 
+    try {
+      track('paste_data_success', { row_count: parsedData.length });
+    } catch (e) {
+      // Ignore in dev
+    }
+
     setError(null);
     onDataParsed(parsedData);
   };
@@ -94,6 +101,12 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
         if (parsed.length === 0) {
           setError('Empty file or could not parse rows.');
         } else {
+          try {
+            const ext = file.name.split('.').pop() || 'unknown';
+            track('file_upload_success', { file_type: ext, row_count: parsed.length });
+          } catch (e) {
+            // Ignore in dev
+          }
           onDataParsed(parsed);
         }
       },
@@ -165,6 +178,11 @@ export default function CsvDropzone({ onDataParsed }: CsvDropzoneProps) {
 
   // 4. Load Sample Data (For immediate trial)
   const handleLoadSampleData = () => {
+    try {
+      track('click_load_demo');
+    } catch (e) {
+      // Ignore in dev
+    }
     const sampleRows = [
       { address: '0x93C4c10DA30B2c842E0d5dC08477dE9b835eE8b9', amount: '1.5' }, // Valid
       { address: '0x41f87a4fbe363c0123ab57cd902c5a1db7c5a866', amount: '0.75' }, // Non-checksummed (should trigger CHECKSUM_FAILED)
