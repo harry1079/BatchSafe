@@ -11,6 +11,8 @@ import FooterCta from '../components/footer-cta';
 import { validateAddress, findDuplicateAddresses } from '../utils/address-validator';
 import { compileAndUnparse } from '../utils/csv-formatter';
 import { getAddress } from 'viem';
+import { Sparkles, ShieldCheck, Wallet, AlertCircle, Terminal } from 'lucide-react';
+
 
 export type ValidationStatus = 'VALID' | 'MALFORMED' | 'CHECKSUM_FAILED' | 'EMPTY';
 
@@ -237,21 +239,126 @@ export default function Home() {
 
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-10 relative z-10">
         {/* Landing Hero Message */}
-        <div className="space-y-3 text-center sm:text-left">
-          <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-            Gnosis Safe Bulk Transfer Compiler
+        <div className="space-y-4 text-center sm:text-left max-w-4xl">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-400 uppercase tracking-wider">
+            <Sparkles className="h-3.5 w-3.5 fill-indigo-400/20" />
+            100% Client-Side CSV Utility
+          </div>
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+            Friday contributor payouts <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-purple-500 bg-clip-text text-transparent">shouldn't ruin your weekend.</span>
           </h1>
-          <p className="text-sm text-zinc-400 max-w-2xl leading-relaxed">
-            Quickly parse a list of EVM addresses and decimal amounts, validate formats, detect duplicate records, and compile Gnosis Safe compatible payouts. Zero server latency, entirely client-side.
+          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl leading-relaxed">
+            Convert messy spreadsheet payouts into Safe-ready batch transactions in seconds. No signups, no wallet connection required to compile, and zero server latency.
           </p>
         </div>
 
         {/* Dashboard Area */}
         <div className="space-y-8">
           {fileStatus === 'idle' ? (
-            <div className="glass-panel p-6 sm:p-8 rounded-2xl">
-              <CsvDropzone onDataParsed={handleDataParsed} />
-            </div>
+            <>
+              <div className="glass-panel p-6 sm:p-8 rounded-2xl">
+                <CsvDropzone onDataParsed={handleDataParsed} />
+              </div>
+
+              {/* Trust & Security Signals */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+                <div className="glass-panel p-6 rounded-2xl space-y-3">
+                  <div className="h-10 w-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                    <ShieldCheck className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-sm font-bold text-zinc-100">Zero Server Latency</h3>
+                  <p className="text-xs text-zinc-400 leading-relaxed">
+                    Your payouts are parsed and compiled entirely in your browser. Contributor addresses and payment amounts never touch a server.
+                  </p>
+                </div>
+
+                <div className="glass-panel p-6 rounded-2xl space-y-3">
+                  <div className="h-10 w-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-400">
+                    <Wallet className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-sm font-bold text-zinc-100">No Wallet Needed</h3>
+                  <p className="text-xs text-zinc-400 leading-relaxed">
+                    Compile, validate, and download Safe-compatible CSV files without linking an admin wallet. Connect only when you execute.
+                  </p>
+                </div>
+
+                <div className="glass-panel p-6 rounded-2xl space-y-3">
+                  <div className="h-10 w-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                    <AlertCircle className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-sm font-bold text-zinc-100">Auto-Error Spotting</h3>
+                  <p className="text-xs text-zinc-400 leading-relaxed">
+                    Instantly checks formatting, detects duplicates, and auto-corrects EVM checksum failures to prevent copy-paste losses.
+                  </p>
+                </div>
+
+                <div className="glass-panel p-6 rounded-2xl space-y-3">
+                  <div className="h-10 w-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-400">
+                    <Terminal className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-sm font-bold text-zinc-100">100% Open Source</h3>
+                  <p className="text-xs text-zinc-400 leading-relaxed">
+                    No black boxes. BatchSafe is completely open-source, client-side, and developer-auditable on GitHub.
+                  </p>
+                </div>
+              </div>
+
+              {/* How It Works Section */}
+              <div className="space-y-8 pt-8">
+                <div className="text-center sm:text-left space-y-2">
+                  <h2 className="font-display text-xl sm:text-2xl font-bold text-white">
+                    Get Safe-ready payouts in 3 simple steps
+                  </h2>
+                  <p className="text-xs sm:text-sm text-zinc-400 max-w-xl">
+                    Save hours on contributor payouts without compromising your DAO's security posture.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                  {/* Visual connectors between steps for md and up */}
+                  <div className="hidden md:block absolute top-5 left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-indigo-500/10 via-zinc-800 to-indigo-500/10 z-0" />
+
+                  {/* Step 1 */}
+                  <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 border border-zinc-700 text-indigo-400 font-bold text-sm shadow-md">
+                      1
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="text-sm font-bold text-zinc-200">Drop your CSV</h4>
+                      <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
+                        Export your weekly contributor spreadsheet and drag it right into the tool. No strict formatting required.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 border border-zinc-700 text-violet-400 font-bold text-sm shadow-md">
+                      2
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="text-sm font-bold text-zinc-200">Review and Fix</h4>
+                      <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
+                        Instantly inspect the preview table. Clean up validation issues, convert addresses, and wipe duplicates in a single click.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 border border-zinc-700 text-indigo-400 font-bold text-sm shadow-md">
+                      3
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="text-sm font-bold text-zinc-200">Import to Gnosis Safe</h4>
+                      <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
+                        Download the Gnosis-native payout CSV, open the Safe Transaction Builder, upload the file, and queue the transaction.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
           ) : (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
               {/* Interactive preview list table */}

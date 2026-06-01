@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2026-06-01
+
+### Changed
+- **Landing Page Copywriting & Visual Layout Redesign**:
+  - Rewrote the primary hero headline to address the Friday contributor payout pain: *"Friday contributor payouts shouldn't ruin your weekend."*
+  - Added a visual Trust & Security signals grid highlighting client-side processing, no wallet connection to compile, auto-error checking, and open-source transparency.
+  - Added a clean 3-step visual sequence outlining the drop -> review -> import process.
+  - Redesigned the footer CTA waitlist message and modal text to cleanly separate the free CSV utility from the upcoming automated Integration Suite waitlist.
+
 ## [1.1.0] - 2026-06-01
 
 ### Added
