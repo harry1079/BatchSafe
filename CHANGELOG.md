@@ -15,6 +15,8 @@ All notable changes to this project will be documented in this file.
   - Configured optimized meta descriptions and keywords for search queries.
   - Updated heading hierarchies with an SEO-targeted H2 subheading: *"Convert CSV to Gnosis Safe batch transactions. No wallet required."*
   - Refined page introductory copy to naturally integrate targeted keywords (import CSV to Gnosis Safe, bulk transfer, batch payout).
+- **Brand Identity Asset Swap**:
+  - Replaced the generic Lucide `ShieldCheck` vector icon in the header logo with the custom high-resolution gradient shield logo (`/icon.png`) mounted inside a styled, dark border frame.
 
 ## [1.1.0] - 2026-06-01
 

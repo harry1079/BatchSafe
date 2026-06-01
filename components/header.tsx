@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Github } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 export default function Header() {
   return (
@@ -7,8 +7,8 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand Logo */}
         <div className="flex items-center gap-2.5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 shadow-lg shadow-indigo-500/20">
-            <ShieldCheck className="h-5 w-5 text-white" />
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900/60 border border-zinc-800 shadow-lg shadow-indigo-500/5 overflow-hidden">
+            <img src="/icon.png" alt="BatchSafe Logo" className="h-6 w-6 object-contain" />
           </div>
           <div className="flex flex-col">
             <span className="font-display text-lg font-bold tracking-tight text-white">

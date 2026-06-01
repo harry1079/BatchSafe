@@ -34,6 +34,9 @@ We have successfully rewritten the landing page copy and refined the layout for 
 * **Targeted Titles & Keywords (`app/layout.tsx`):** Changed title to `"BatchSafe | Gnosis Safe CSV Import & Bulk Batch Payout Tool"` and optimized metadata description/keywords.
 * **H2 Subheading & Copy Integration (`app/page.tsx`):** Inserted the subheader `"Convert CSV to Gnosis Safe batch transactions. No wallet required."` and updated introduction copy to naturally use targeted keywords like `import CSV to Gnosis Safe`, `bulk transfer`, and `batch payout`.
 
+### 6. Brand Identity Asset Swap (`components/header.tsx`)
+* Replaced the generic Lucide `ShieldCheck` icon in the brand logo container with the custom gradient shield logo `/icon.png` (the favicon asset) styled inside a dark border container to highlight its gradient fills.
+
 ---
 
 ## Verification Results
