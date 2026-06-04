@@ -79,13 +79,13 @@ export default function FooterCta({
             <div className="space-y-2 max-w-2xl">
               <div className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-bold text-indigo-400 uppercase tracking-wider">
                 <Zap className="h-3 w-3 fill-indigo-400" />
-                Automated Workflows
+                BatchSafe Cloud
               </div>
               <h3 className="font-display text-base sm:text-lg font-bold text-zinc-100 leading-snug">
                 Ready to skip spreadsheets entirely next Friday?
               </h3>
               <p className="text-xs text-zinc-300 leading-relaxed">
-                Join the waitlist for the BatchSafe Automation Suite. Connect ClickUp, Linear, or GitHub directly to your Gnosis Safe to verify contributor wallets and compile payout batches automatically from completed tasks.
+                Use BatchSafe Cloud when you want payout task tracking, contributor records, team workflows, saved batches, export history, and auditability. Join the waitlist for BatchSafe Cloud.
               </p>
             </div>
 
@@ -97,7 +97,7 @@ export default function FooterCta({
               }}
               className="flex items-center gap-2 shrink-0 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 px-5 py-3 text-xs font-bold text-white shadow-lg shadow-indigo-500/10 hover:shadow-indigo-500/25 hover:from-indigo-600 hover:to-violet-700 transition-all duration-200 cursor-pointer group"
             >
-              <span>Join Automation Beta Waitlist</span>
+              <span>Join BatchSafe Cloud Waitlist</span>
               <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
             </button>
           </div>
@@ -119,7 +119,7 @@ export default function FooterCta({
                   )}
                 </div>
                 <h4 className="font-display text-sm font-bold text-white">
-                  {modalSource === 'export' ? 'Export Successful! 🎉' : 'BatchSafe Automation Waitlist'}
+                  {modalSource === 'export' ? 'Export Successful! 🎉' : 'BatchSafe Cloud Waitlist'}
                 </h4>
               </div>
               <button
@@ -145,8 +145,8 @@ export default function FooterCta({
                   <h5 className="font-semibold text-sm text-zinc-200">You're on the list!</h5>
                   <p className="mt-1 text-xs text-zinc-200">
                     {modalSource === 'export'
-                      ? "We'll invite you once our ClickUp, Linear, and GitHub integration modules are ready!"
-                      : "We'll email you as soon as our automated integrations are live."}
+                      ? "We'll invite you as soon as BatchSafe Cloud features are ready!"
+                      : "We'll email you as soon as early access to BatchSafe Cloud is ready."}
                   </p>
                   <p className="mt-3 text-xs text-zinc-400 italic animate-pulse">
                     You will be redirected to the dashboard in a couple of seconds...
@@ -158,11 +158,11 @@ export default function FooterCta({
                 <p className="text-xs text-zinc-300 leading-relaxed">
                   {modalSource === 'export' ? (
                     <span>
-                      Ready to put Friday payouts on autopilot? Join the waitlist for our upcoming Automation Suite to connect Linear, ClickUp, or GitHub, and compile payouts automatically from completed tasks.
+                      Want payout task tracking, contributor records, and team workflows? Join the waitlist for BatchSafe Cloud.
                     </span>
                   ) : (
                     <span>
-                      Enter your email to join the waitlist for the Gnosis Safe Automation Suite. Get early beta previews and updates on ClickUp, Linear, and GitHub integration modules.
+                      Enter your email to join the waitlist for BatchSafe Cloud. Get early beta previews and updates on our upcoming workflow tools.
                     </span>
                   )}
                 </p>
