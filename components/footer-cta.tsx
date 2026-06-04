@@ -82,10 +82,10 @@ export default function FooterCta({
                 BatchSafe Cloud
               </div>
               <h3 className="font-display text-base sm:text-lg font-bold text-zinc-100 leading-snug">
-                Ready to skip spreadsheets entirely next Friday?
+                Ready to stop managing payouts in spreadsheets?
               </h3>
               <p className="text-xs text-zinc-300 leading-relaxed">
-                Use BatchSafe Cloud when you want payout task tracking, contributor records, team workflows, saved batches, export history, and auditability. Join the waitlist for BatchSafe Cloud.
+                BatchSafe Cloud helps teams track payable work, manage contributor records, prepare Safe-ready payout batches, and keep export history for safer crypto payouts. Join the waitlist for BatchSafe Cloud.
               </p>
             </div>
 
