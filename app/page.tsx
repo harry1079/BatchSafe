@@ -251,6 +251,9 @@ export default function Home() {
             Convert CSV to Gnosis Safe batch transactions. No wallet required.
           </h2>
           <p className="text-sm sm:text-base text-zinc-400 max-w-3xl leading-relaxed">
+            Use the free BatchSafe CSV tool without sending payout data anywhere. It runs in your browser, connects to no wallet, and exports Safe-ready CSVs locally.
+          </p>
+          <p className="text-sm sm:text-base text-zinc-400 max-w-3xl leading-relaxed">
             BatchSafe is a secure, client-side utility designed to streamline how you <strong className="font-semibold text-zinc-200">import CSV to Gnosis Safe</strong>. Instead of manual copy-pasting, drop your spreadsheet to validate formatting, fix EVM checksums, and export a clean <strong className="font-semibold text-zinc-200">bulk transfer</strong> file for your weekly <strong className="font-semibold text-zinc-200">batch payout</strong>.
           </p>
         </div>
